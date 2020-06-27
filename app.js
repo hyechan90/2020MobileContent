@@ -9,7 +9,7 @@ const User = require('./models/User')
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.post('/login', async (req, res) => {
-	console.log(login)
+	console.log('login')
 	const body = req.body
 	try {
 		const userCheck = await User.findOne({
