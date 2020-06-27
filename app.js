@@ -34,7 +34,7 @@ app.post('/register', async (req, res) => {
 			res.status(401).send('비밀번호가 같지 않습니다.')
 			return
 		}
-		const emailCheck = await User.findone({ email: body.email })
+		const emailCheck = await User.findOne({ email: body.email })
 		console.log(emailCheck)
 		if (emailCheck.length) {
 			res.status(401).send('이미 회원가입한 계정입니다.')
