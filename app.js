@@ -35,11 +35,14 @@ app.post('/register', async (req, res) => {
 			return
 		}
 		const emailCheck = await User.find({ email: body.email })
+		console.log(emailCheck)
 		if (emailCheck.length) {
 			res.status(401).send('이미 회원가입한 계정입니다.')
 			return
 		}
+		console.log('emailCheck done')
 		const user = await User.create(body)
+		console.log('created user')
 		res.send(user)
 	} catch (e) {
 		console.log(e)
