@@ -30,17 +30,17 @@ app.post('/register', async (req, res) => {
 	console.log('register')
 	try {
 		const body = req.body
-		// if (body.password !== body.passwordConfirm) {
-		// 	res.status(401).send('비밀번호가 같지 않습니다.')
-		// 	return
-		// }
-		// const emailCheck = await User.findOne({ email: body.email })
-		// console.log(emailCheck)
-		// if (emailCheck.length) {
-		// 	res.status(401).send('이미 회원가입한 계정입니다.')
-		// 	return
-		// }
-		// console.log('emailCheck done')
+		if (body.password !== body.passwordConfirm) {
+			res.status(401).send('비밀번호가 같지 않습니다.')
+			return
+		}
+		const emailCheck = await User.findone({ email: body.email })
+		console.log(emailCheck)
+		if (emailCheck.length) {
+			res.status(401).send('이미 회원가입한 계정입니다.')
+			return
+		}
+		console.log('emailCheck done')
 		const user = await User.create(body)
 		console.log('created user')
 		res.send(user)
@@ -51,7 +51,7 @@ app.post('/register', async (req, res) => {
 })
 
 mongoose.connect(
-	'mongodb://localhost:27017/test',
+	'mongodb://localhost:27017/mocon',
 	{ useNewUrlParser: true, useUnifiedTopology: true },
 	() => {
 		console.log('connected to DB')
