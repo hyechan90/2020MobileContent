@@ -8,6 +8,10 @@ const User = require('./models/User')
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
+app.get('/', (req, res) => {
+	res.send('Server Running...')
+})
+
 app.post('/login', async (req, res) => {
 	console.log('login')
 	const body = req.body
@@ -42,6 +46,7 @@ app.post('/register', async (req, res) => {
 			return
 		}
 		console.log('emailCheck done')
+		console.log(body)
 		const user = await User.create(body)
 		console.log('created user')
 		res.send(user)
