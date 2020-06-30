@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const bcrypt = require('bcrypt')
 
+const AI = require('./main')
 const User = require('./models/User')
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -54,6 +55,10 @@ app.post('/register', async (req, res) => {
 		console.log(e)
 		res.sendStatus(500)
 	}
+})
+
+app.post('/list', (req, res) => {
+	console.log(req.body)
 })
 
 mongoose.connect(
