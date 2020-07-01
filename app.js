@@ -59,7 +59,7 @@ app.post('/register', async (req, res) => {
 
 app.post('/list', (req, res) => {
 	console.log(req.body)
-	res.send('ok')
+	res.send(req.body)
 })
 
 mongoose.connect(
