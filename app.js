@@ -58,9 +58,13 @@ app.post('/register', async (req, res) => {
 })
 
 app.post('/list', (req, res) => {
-	const list = req.body.list
+	const body = req.body
 	console.log(JSON.parse(list))
-	res.send(JSON.parse(list))
+
+	const mbti = User.find({ email: body })
+
+	console.log(AI(JSON.parse(list), mbti))
+	res.send(AI(JSON.parse(list), mbti))
 })
 
 mongoose.connect(
