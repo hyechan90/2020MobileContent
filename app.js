@@ -57,13 +57,13 @@ app.post('/register', async (req, res) => {
 	}
 })
 
-app.post('/list', (req, res) => {
+app.post('/list', async (req, res) => {
 	try {
 		const body = req.body
 		console.log(body.email)
 		console.log(body)
 
-		const mbti = User.find({ email: body.email })
+		const mbti = await User.find({ email: body.email })
 
 		console.log(AI(JSON.parse(body.list), mbti))
 		res.send(AI(JSON.parse(body.list), mbti))
