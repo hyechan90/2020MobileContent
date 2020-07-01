@@ -49,7 +49,7 @@ app.post('/register', async (req, res) => {
 		console.log('emailCheck done')
 		console.log(body)
 		const user = await User.create(body)
-		console.log('created user')
+		console.log(user)
 		res.send(user)
 	} catch (e) {
 		console.log(e)
