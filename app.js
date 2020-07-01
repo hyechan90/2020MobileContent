@@ -63,10 +63,10 @@ app.post('/list', async (req, res) => {
 		console.log(body.email)
 		console.log(body)
 
-		const mbti = await User.find({ email: body.email })
+		const user = await User.findOne({ email: body.email })
 
-		console.log(AI(JSON.parse(body.list), mbti))
-		res.send(AI(JSON.parse(body.list), mbti))
+		console.log(AI(JSON.parse(body.list), user.mbti))
+		res.send(AI(JSON.parse(body.list), user.mbti))
 	} catch (e) {
 		console.error(e)
 		res.sendStatus(500)

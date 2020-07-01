@@ -2,7 +2,7 @@ let processing = require('./datas/processing.json')
 //각각의 별점에 따라 점수를 반환 하는 함수
 const getRank = (json, mbti) => {
 	//0==time,1==importance,2==succes
-
+	
 	for (let value of processing[mbti][0]) {
 		if (value == 0) {
 			json['rating_time'] *= 2
