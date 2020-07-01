@@ -58,14 +58,19 @@ app.post('/register', async (req, res) => {
 })
 
 app.post('/list', (req, res) => {
-	const body = req.body
-	console.log(body.email)
-	console.log(body)
+	try {
+		const body = req.body
+		console.log(body.email)
+		console.log(body)
 
-	const mbti = User.find({ email: body.email })
+		const mbti = User.find({ email: body.email })
 
-	console.log(AI(JSON.parse(body.list), mbti))
-	res.send(AI(JSON.parse(body.list), mbti))
+		console.log(AI(JSON.parse(body.list), mbti))
+		res.send(AI(JSON.parse(body.list), mbti))
+	} catch (e) {
+		console.error(e)
+		res.sendStatus(500)
+	}
 })
 
 mongoose.connect(
