@@ -58,8 +58,9 @@ app.post('/register', async (req, res) => {
 })
 
 app.post('/list', (req, res) => {
-	console.log(req.body)
-	res.send(req.body)
+	const list = req.body.list
+	console.log(JSON.parse(list))
+	res.send(JSON.parse(list))
 })
 
 mongoose.connect(
