@@ -59,7 +59,8 @@ app.post('/register', async (req, res) => {
 
 app.post('/list', (req, res) => {
 	const body = req.body
-	console.log(JSON.parse(body.list))
+	console.log(body.email)
+	console.log(body)
 
 	const mbti = User.find({ email: body.email })
 
