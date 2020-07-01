@@ -59,12 +59,12 @@ app.post('/register', async (req, res) => {
 
 app.post('/list', (req, res) => {
 	const body = req.body
-	console.log(JSON.parse(list))
+	console.log(JSON.parse(body.list))
 
-	const mbti = User.find({ email: body })
+	const mbti = User.find({ email: body.email })
 
-	console.log(AI(JSON.parse(list), mbti))
-	res.send(AI(JSON.parse(list), mbti))
+	console.log(AI(JSON.parse(body.list), mbti))
+	res.send(AI(JSON.parse(body.list), mbti))
 })
 
 mongoose.connect(
