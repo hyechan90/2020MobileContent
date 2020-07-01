@@ -22,7 +22,7 @@ app.post('/login', async (req, res) => {
 			password: body.password,
 		})
 		if (userCheck) {
-			console.log('로그인 성공!')
+			console.log(userCheck)
 			res.send('로그인 성공!')
 		} else {
 			res.status(401).send('로그인 실패...')
